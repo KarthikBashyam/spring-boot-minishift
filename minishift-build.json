@@ -1,0 +1,78 @@
+{
+   "kind": "Template",
+   "apiVersion": "v1",
+   "metadata": {
+      "name": "spring-boot-helloworld",
+      "annotations": {
+         "description": "This example shows how to create a simple spring boot application in openshift origin v3",
+         "iconClass": "",
+         "tags": "spring-boot"
+      }
+   },
+   "objects": [{
+         "kind": "BuildConfig",
+         "apiVersion": "v1",
+         "metadata": {
+            "name": "${APPLICATION_NAME}",
+            "labels": {
+               "name": "${APPLICATION_NAME}"
+            }
+         },
+         "spec": {
+            "triggers": [{
+                  "type": "GitHub",
+                  "github": {
+                     "secret": "ea9beedcb7ee911d87b6fd3447e907c4e8528fb0"
+                  }
+               },
+               {
+                  "type": "Generic",
+                  "generic": {
+                     "secret": "ea9beedcb7ee911d87b6fd3447e907c4e8528fb0"
+                  }
+               }
+            ],
+            "source": {
+               "type": "Git",
+               "git": {
+                  "uri": "https://github.com/KarthikBashyam/spring-boot-minishift.git"
+               }
+            },
+            "strategy": {
+               "type": "Docker",
+               "dockerStrategy": {
+                  "source": {
+                     "kind": "dockerfile",
+                     "name": "Dockerfile"
+                  }
+               }
+            },
+            "output": {
+               "to": {
+                  "kind": "ImageStreamTag",
+                  "name": "spring-boot-helloworld:latest"
+               }
+            },
+            "resources": {}
+         }
+      },
+      {
+         "kind": "ImageStream",
+         "apiVersion": "v1",
+         "metadata": {
+            "name": "spring-boot-helloworld"
+         }
+      }
+   ],
+   "parameters": [
+      {
+         "name": "APPLICATION_NAME",
+         "displayName": "Namespace",
+         "description": "Application Name",
+         "value": "spring-boot-helloworld"
+      }
+   ],
+   "labels": {
+      "template": "application-template-stibuild"
+   }
+}
