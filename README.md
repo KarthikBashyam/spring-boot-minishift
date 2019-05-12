@@ -1,7 +1,15 @@
 # spring-boot-minishift
 
-This is a sample spring boot application deployed on OKD (Openshift).
+This is a sample spring boot application deployed on OKD (Minishift).
+
+Start Minishift by running teh below command
+
+minishift start
+
+Create the minishift template with build config steps using the below command.
 
 oc process -f minishift-build.json | oc create -f -
+
+Trigger the build using the below command.
 
 oc start-build spring-boot-helloworld
