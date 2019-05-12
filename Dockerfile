@@ -1,7 +1,6 @@
 FROM gradle:4.3.0-jdk8-alpine
 ADD src src
-ADD build.gradle src
-WORKDIR /src
+ADD build.gradle .
 RUN gradle build -x test
 
 FROM openjdk:8-jdk-alpine
