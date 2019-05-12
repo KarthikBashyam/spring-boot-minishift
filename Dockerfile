@@ -1,4 +1,4 @@
-FROM gradle:4.4.0-jdk8-alpine
+FROM gradle:5.4.1-jdk8
 ADD src src
 ADD build.gradle .
 RUN gradle build -x test
