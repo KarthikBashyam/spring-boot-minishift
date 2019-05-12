@@ -5,7 +5,7 @@ RUN gradle build -x test
 
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
-COPY target/spring-boot-minishift-0.0.1-SNAPSHOT.jar /usr/src/boot/
+COPY spring-boot-minishift-0.0.1-SNAPSHOT.jar /usr/src/boot/
 WORKDIR /usr/src/boot/
 EXPOSE 8000
 CMD ["java", "-jar", "spring-boot-minishift-0.0.1-SNAPSHOT.jar"]
