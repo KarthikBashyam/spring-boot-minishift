@@ -3,6 +3,8 @@ ADD src src
 ADD build.gradle .
 RUN gradle build -x test
 
+ls -ltr
+
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
 COPY target/spring-boot-minishift-0.0.1-SNAPSHOT.jar /usr/src/boot/
