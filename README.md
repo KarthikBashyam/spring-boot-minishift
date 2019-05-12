@@ -2,7 +2,7 @@
 
 This is a sample spring boot application deployed on OKD (Minishift).
 
-Start Minishift by running teh below command
+Start Minishift by running the below command
 
 minishift start
 
