@@ -3,7 +3,7 @@ ADD src src
 ADD build.gradle .
 RUN gradle build -x test
 
-CMD ["/bin/sleep","200000"]
+CMD ["/bin/sleep","10m"]
 
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
