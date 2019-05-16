@@ -4,6 +4,8 @@ plugins {
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -18,7 +20,13 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-jar {
-	baseName = 'spring-boot-minishift-0.0.1-SNAPSHOT'
+bootJar {
+	baseName = 'spring-boot-minishift'
 	enabled = true
+}
+
+task unpack(type: Copy) {
+    dependsOn bootJar
+    from(zipTree(tasks.bootJar.outputs.files.singleFile))
+    into("build/dependency")
 }
