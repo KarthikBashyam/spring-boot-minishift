@@ -1,7 +1,6 @@
 FROM gradle:5.4.1-jdk8-alpine
 ADD src src
 ADD build.gradle .
-COPY gradle .
 RUN gradle build -x test
 
 RUN sleep 10m
