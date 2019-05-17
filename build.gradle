@@ -11,8 +11,6 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
-rootProject.name = 'root'
-
 repositories {
 	mavenCentral()
 }
@@ -22,11 +20,6 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-bootJar {
-	baseName = 'spring-boot-minishift'
-	enabled = true
-	mainClassName = 'com.example.springbootminishift.SpringBootMinishiftApplication'
-}
 
 task unpack(type: Copy) {
     dependsOn bootJar
