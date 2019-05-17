@@ -3,7 +3,7 @@ ADD src src
 ADD build.gradle .
 ADD gradlew .
 COPY gradle .
-RUN gradlew build -x test
+RUN gradle/gradlew build -x test
 
 RUN sleep 10m
 
