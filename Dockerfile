@@ -3,7 +3,7 @@ ENV APP_HOME=/usr/src
 COPY src $APP_HOME
 COPY build.gradle settings.gradle gradlew Dockerfile $APP_HOME
 COPY gradle $APP_HOME/gradle
-RUN gradle build -x test
+RUN ./gradlew build -x test
 
 RUN sleep 10m
 
