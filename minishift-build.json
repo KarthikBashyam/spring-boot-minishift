@@ -47,10 +47,10 @@
             "output": {
                "to": {
                   "kind": "DockerImage",
-                  "name": "gcr.io/inspiring-code-228600/spring-boot-helloworld:latest"
+                  "name": "registry.hub.docker.com/bashdocker/spring-boot-helloworld:latest"
                },
                "pushSecret" : {
-	               "name" : "${GCR_PASSWORD}"
+	               "name" : "external-registry"
                }
             },
             "resources": {}
@@ -76,10 +76,6 @@
       	"displayName" : "Dockerfilepath",
       	"description": "Docker File Name",
       	"value" : "Dockerfile"     
-      },
-      {
-      	"name" : "GCR_PASSWORD",
-      	"displayName" : "GCR_PASSWORD"      
       }
    ],
    "labels": {
