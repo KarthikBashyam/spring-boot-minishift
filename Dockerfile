@@ -1,9 +1,10 @@
 FROM gradle:5.4.1-jdk8-alpine
 ADD src src
 ADD build.gradle .
-RUN gradle unpack -x test
+ADD gradlew .
+RUN gradlew build -x test
 
-#RUN sleep 10m
+RUN sleep 10m
 
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp

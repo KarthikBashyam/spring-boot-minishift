@@ -1,0 +1,112 @@
+{
+    "kind": "Template",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "spring-boot-helloworld-deploy",
+        "annotations": {
+            "description": "This example shows how to create a simple spring boot application in openshift origin v3",
+            "iconClass": "",
+            "tags": "spring-boot-deploy"
+        }
+    },
+    "objects": [{
+            "kind": "DeploymentConfig",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "${DEPLOYMENT_NAME}",
+                "labels": {
+                    "deploymentConfig": "${DEPLOYMENT_NAME}",
+                    "application": "${DEPLOYMENT_NAME}"
+                }
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "deploymentConfig": "${DEPLOYMENT_NAME}"
+                },
+                "strategy": {
+                    "type": "Recreate"
+                },
+                "template": {
+                    "metadata": {
+                        "labels": {
+                            "deploymentConfig": "${DEPLOYMENT_NAME}",
+                            "application": "${DEPLOYMENT_NAME}"
+                        },
+                        "name": "${DEPLOYMENT_NAME}"
+                    },
+                    "spec": {
+                        "containers": [{
+                            "name": "${DEPLOYMENT_NAME}",
+                            "image": "registry.hub.docker.com/bashdocker/spring-boot-helloworld:latest",
+                            "imagePullPolicy": "Always",
+                            "env": [{
+                                    "name": "OPENSHIFT_DNS_PING_SERVICE_NAME",
+                                    "value": "mlbparks-ping"
+                                }
+
+                            ],
+                            "ports": [{
+                                    "name": "http-port",
+                                    "containerPort": 8000,
+                                    "protocol": "TCP"
+                                },
+                                {
+                                    "name": "http-ping",
+                                    "containerPort": 8000,
+                                    "protocol": "TCP"
+                                }
+                            ],                           
+                            "resources": {},
+                            "terminationMessagePath": "/dev/termination-log",
+                            "securityContext": {
+                                "capabilities": {},
+                                "privileged": false
+                            }
+                        }],
+                        "restartPolicy": "Always",
+                        "dnsPolicy": "ClusterFirst"
+                    }
+                },
+                "triggers": [
+
+                ]
+            }
+        },
+        {
+            "kind": "Service",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "${SERVICE_NAME}",
+                "labels": {
+                    "application": "${SERVICE_NAME}"
+                }
+            },
+            "spec": {
+                "ports": [{
+                    "port": 8000,
+                    "targetPort": 8000
+                }],
+                "selector": {
+                    "deploymentConfig": "${DEPLOYMENT_NAME}"
+                }
+            }
+        }
+    ],
+    "parameters": [{
+            "name": "DEPLOYMENT_NAME",
+            "displayName": "Namespace",
+            "description": "Application Name",
+            "value": "spring-boot-helloworld-deploy"
+        },
+        {
+            "name": "SERVICE_NAME",
+            "displayName": "Namespace",
+            "description": "Service Name",
+            "value": "spring-boot-helloworld-service"
+        }
+    ],
+    "labels": {
+        "template": "application-template-deploy"
+    }
+}
