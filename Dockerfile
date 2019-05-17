@@ -11,4 +11,4 @@ VOLUME /tmp
 #WORKDIR /usr/src/boot/
 EXPOSE 8000
 #CMD ["java", "-jar", "spring-boot-minishift-0.0.1-SNAPSHOT.jar"]
-CMD ["jave","-cp","/tmp/build/inputs/bin/main/com/example/springbootminishift","SpringBootMinishiftApplication"]
+CMD ["java","-cp","/tmp/build/inputs/bin/main/com/example/springbootminishift","SpringBootMinishiftApplication"]
