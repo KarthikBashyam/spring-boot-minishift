@@ -57,14 +57,7 @@
             },
             "resources": {}
          }
-      },
-      {
-         "kind": "ImageStream",
-         "apiVersion": "v1",
-         "metadata": {
-            "name": "spring-boot-helloworld"
-         }
-      }
+      }      
    ],
    "parameters": [
       {
