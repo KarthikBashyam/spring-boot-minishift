@@ -1,4 +1,5 @@
 FROM openjdk:8 AS TEMP_BUILD_IMAGE
+RUN mkdir -p /usr/app
 ENV APP_HOME=/usr/app/
 WORKDIR $APP_HOME
 COPY build.gradle settings.gradle gradlew $APP_HOME
