@@ -16,4 +16,5 @@ oc start-build spring-boot-helloworld
 
 
 oc secrets new external-registry .dockerconfigjson=config.json
+
 oc secrets add serviceaccount/builder secrets/external-registry
