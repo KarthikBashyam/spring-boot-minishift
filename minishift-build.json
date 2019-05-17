@@ -48,6 +48,9 @@
                "to": {
                   "kind": "DockerImage",
                   "name": "gcr.io/inspiring-code-228600/spring-boot-helloworld:latest"
+               },
+               "pushSecret" : {
+	               "name" : "${gcrpassword}"
                }
             },
             "resources": {}
