@@ -50,7 +50,7 @@
                   "name": "gcr.io/inspiring-code-228600/spring-boot-helloworld:latest"
                },
                "pushSecret" : {
-	               "name" : "${gcrpassword}"
+	               "name" : "${GCR_PASSWORD}"
                }
             },
             "resources": {}
@@ -75,8 +75,11 @@
       	"name" : "DOCKER_FILE_PATH",
       	"displayName" : "Dockerfilepath",
       	"description": "Docker File Name",
-      	"value" : "Dockerfile"
-     
+      	"value" : "Dockerfile"     
+      },
+      {
+      	"name" : "GCR_PASSWORD",
+      	"displayName" : "GCR_PASSWORD"      
       }
    ],
    "labels": {
