@@ -1,12 +1,9 @@
-FROM openjdk:8 AS TEMP_BUILD_IMAGE
-RUN mkdir -p /usr/app
-ENV APP_HOME=/usr/app/
-WORKDIR $APP_HOME
-COPY build.gradle settings.gradle gradlew $APP_HOME
+FROM openjdk:8 AS build
+ENV APP_HOME=/usr/src
+COPY src $APP_HOME
+COPY build.gradle settings.gradle gradlew Dockerfile $APP_HOME
 COPY gradle $APP_HOME/gradle
-RUN ./gradlew build || return 0 
-COPY . .
-RUN ./gradlew build
+RUN gradle build -x test
 
 RUN sleep 10m
 

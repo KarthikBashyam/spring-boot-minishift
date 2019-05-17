@@ -40,11 +40,7 @@
                             "name": "${DEPLOYMENT_NAME}",
                             "image": "registry.hub.docker.com/bashdocker/spring-boot-helloworld:latest",
                             "imagePullPolicy": "Always",
-                            "env": [{
-                                    "name": "OPENSHIFT_DNS_PING_SERVICE_NAME",
-                                    "value": "mlbparks-ping"
-                                }
-
+                            "env": [
                             ],
                             "ports": [{
                                     "name": "http-port",
