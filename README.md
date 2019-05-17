@@ -15,6 +15,6 @@ Trigger the build using the below command.
 oc start-build spring-boot-helloworld
 
 
-oc secrets new external-registry .dockerconfigjson=config.json
+oc secrets create external-registry --docker-username={username} --docker-password={password} --docker-email={email} --docker-server=registry.hub.docker.com
 
 oc secrets add serviceaccount/builder secrets/external-registry
