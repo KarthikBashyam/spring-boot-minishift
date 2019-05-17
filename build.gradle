@@ -23,6 +23,7 @@ dependencies {
 bootJar {
 	baseName = 'spring-boot-minishift'
 	enabled = true
+	mainClassName = 'com.example.springbootminishift.SpringBootMinishiftApplication'
 }
 
 task unpack(type: Copy) {
