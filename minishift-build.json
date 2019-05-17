@@ -1,3 +1,5 @@
+/* Build Template - Builds the docker image and uploads to docker hub registry. */
+
 {
    "kind": "Template",
    "apiVersion": "v1",
