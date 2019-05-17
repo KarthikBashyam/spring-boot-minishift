@@ -1,9 +1,7 @@
-FROM openjdk:8 AS build
-ENV APP_HOME=/usr/src
-COPY src $APP_HOME
-COPY build.gradle settings.gradle gradlew Dockerfile $APP_HOME
-COPY gradle $APP_HOME/gradle
-RUN /usr/src/gradlew build -x test
+FROM gradle:jdk10 as builder
+COPY --chown=gradle:gradle . /home/gradle/src
+WORKDIR /home/gradle/src
+RUN gradle build
 
 RUN sleep 10m
 

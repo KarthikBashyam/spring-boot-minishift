@@ -26,3 +26,4 @@ task unpack(type: Copy) {
     from(zipTree(tasks.bootJar.outputs.files.singleFile))
     into("build/dependency")
 }
+mainClassName = "com.example.springbootminishift.SpringBootMinishiftApplication"
