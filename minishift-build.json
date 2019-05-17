@@ -46,8 +46,8 @@
             },
             "output": {
                "to": {
-                  "kind": "ImageStreamTag",
-                  "name": "spring-boot-helloworld:latest"
+                  "kind": "DockerImage",
+                  "name": "gcr.io/inspiring-code-228600/spring-boot-helloworld:latest"
                }
             },
             "resources": {}
