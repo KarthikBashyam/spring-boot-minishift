@@ -1,7 +1,8 @@
-FROM gradle:jdk8-alpine as builder
-COPY --chown=gradle:gradle . /home/gradle/src
-WORKDIR /home/gradle/src
-RUN gradle build
+FROM gradle:4.5-jdk-alpine as BUILD_IMAGE
+RUN mkdir /home/app
+COPY src build.gradle settings.gradle Dockerfile /home/app
+WORKDIR /home/app
+RUN gradle build -x test
 
 RUN sleep 10m
 
