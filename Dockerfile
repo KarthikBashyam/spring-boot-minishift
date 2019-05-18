@@ -1,4 +1,5 @@
 FROM gradle:4.5-jdk-alpine as BUILD_IMAGE
+RUN ls /home
 RUN chown -R admin /usr
 RUN mkdir -p /usr/app
 COPY src build.gradle settings.gradle Dockerfile /usr/app
