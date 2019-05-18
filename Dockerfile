@@ -1,9 +1,7 @@
 FROM gradle:4.5-jdk-alpine as BUILD_IMAGE
-RUN sudo su - root
-RUN chown -R gradle /usr/app
-RUN mkdir -p /usr/app
-COPY src build.gradle settings.gradle Dockerfile /usr/app
-WORKDIR /usr/app
+#RUN mkdir -p /usr/app
+COPY src build.gradle settings.gradle Dockerfile /usr/
+WORKDIR /usr/
 RUN gradle build -x test
 
 RUN sleep 10m
