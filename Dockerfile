@@ -1,4 +1,4 @@
-FROM gradle:5.4.1-jdk8-alpine as BUILD_IMAGE
+FROM openjdk:8 as BUILD_IMAGE
 #RUN mkdir -p /usr/app
 ADD src build.gradle settings.gradle Dockerfile /usr/
 WORKDIR /usr/
