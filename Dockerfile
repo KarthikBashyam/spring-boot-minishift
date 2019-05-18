@@ -1,6 +1,6 @@
 FROM gradle:4.5-jdk-alpine as BUILD_IMAGE
 #RUN mkdir -p /usr/app
-COPY src build.gradle settings.gradle Dockerfile /usr/
+ADD src build.gradle settings.gradle Dockerfile /usr/
 WORKDIR /usr/
 RUN gradle build -x test
 
